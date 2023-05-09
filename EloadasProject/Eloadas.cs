@@ -6,7 +6,7 @@
 
         public Eloadas(int sorokSzama, int helyekSzama)
         {
-            if (sorokSzama < 0 || helyekSzama < 0)
+            if (sorokSzama <= 0 || helyekSzama <= 0)
             {
                 throw new ArgumentException();
             }

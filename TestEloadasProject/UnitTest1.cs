@@ -25,5 +25,32 @@ namespace TestEloadasProject
                 Eloadas e = new Eloadas(1, -1);
             });
         }
+
+        [Test]
+        public void Eloadas_bevitelMinMindketto()
+        {
+            Assert.Throws<ArgumentException>(() =>
+            {
+                Eloadas e = new Eloadas(-1, -1);
+            });
+        }
+
+        [Test]
+        public void Eloadas_bevitelMinJo()
+        {
+            Assert.DoesNotThrow(() =>
+            {
+                Eloadas e = new Eloadas(1, 1);
+            });
+        }
+
+        [Test]
+        public void Eloadas_bevitelJo()
+        {
+            Assert.DoesNotThrow(() =>
+            {
+                Eloadas e = new Eloadas(10, 15);
+            });
+        }
     }
 }

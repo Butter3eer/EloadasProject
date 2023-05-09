@@ -83,14 +83,14 @@ namespace TestEloadasProject
         [Test]
         public void lefoglal_helyet()
         {
-            Assert.That(true, Is.EqualTo(eloadas.lefoglal()));
+            Assert.That(eloadas.lefoglal(), Is.EqualTo(true));
         }
 
         [Test]
         public void lefoglal_elsoHelyet()
         {
             eloadas.lefoglal();
-            Assert.That(true, Is.EqualTo(eloadas.Foglalasok[0, 0]));
+            Assert.That(eloadas.Foglalasok[0, 0], Is.EqualTo(true));
         }
 
         [Test]
@@ -98,7 +98,7 @@ namespace TestEloadasProject
         {
             eloadas.lefoglal();
             eloadas.lefoglal();
-            Assert.That(true, Is.EqualTo(eloadas.Foglalasok[0, 1]));
+            Assert.That(eloadas.Foglalasok[0, 1], Is.EqualTo(true));
         }
 
         [Test]
@@ -106,8 +106,8 @@ namespace TestEloadasProject
         {
             eloadas.lefoglal();
             eloadas.lefoglal();
-            Assert.That(true, Is.EqualTo(eloadas.Foglalasok[0, 1]));
-            Assert.That(true, Is.EqualTo(eloadas.Foglalasok[0, 0]));
+            Assert.That(eloadas.Foglalasok[0, 1], Is.EqualTo(true));
+            Assert.That(eloadas.Foglalasok[0, 0], Is.EqualTo(true));
         }
 
         [Test]
@@ -221,6 +221,64 @@ namespace TestEloadasProject
             eloadas.lefoglal();
             eloadas.lefoglal();
             Assert.That(eloadas.Foglalt(1, 4), Is.EqualTo(true));
+        }
+
+        [Test]
+        public void Foglalt_haMajdnemTeleTrue()
+        {
+            Eloadas e = new Eloadas(1, 5);
+            e.lefoglal();
+            e.lefoglal();
+            e.lefoglal();
+            e.lefoglal();
+            Assert.That(e.Foglalt(1, 4), Is.EqualTo(true));
+        }
+
+        [Test]
+        public void Foglalt_haMajdnemTeleFalse()
+        {
+            Eloadas e = new Eloadas(1, 5);
+            e.lefoglal();
+            e.lefoglal();
+            e.lefoglal();
+            e.lefoglal();
+            Assert.That(e.Foglalt(1, 5), Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Foglalt_haTeleTrue()
+        {
+            Eloadas e = new Eloadas(1, 5);
+            e.lefoglal();
+            e.lefoglal();
+            e.lefoglal();
+            e.lefoglal();
+            e.lefoglal();
+            Assert.That(e.Foglalt(1, 3), Is.EqualTo(true));
+        }
+
+        [Test]
+        public void Foglalt_haTeleTrueAlso()
+        {
+            Eloadas e = new Eloadas(1, 5);
+            e.lefoglal();
+            e.lefoglal();
+            e.lefoglal();
+            e.lefoglal();
+            e.lefoglal();
+            Assert.That(e.Foglalt(1, 1), Is.EqualTo(true));
+        }
+
+        [Test]
+        public void Foglalt_haTeleTrueFelso()
+        {
+            Eloadas e = new Eloadas(1, 5);
+            e.lefoglal();
+            e.lefoglal();
+            e.lefoglal();
+            e.lefoglal();
+            e.lefoglal();
+            Assert.That(e.Foglalt(1, 5), Is.EqualTo(true));
         }
     }
 }

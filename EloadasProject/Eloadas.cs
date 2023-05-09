@@ -20,23 +20,19 @@
         {
             int sorok = foglalasok.GetLength(0);
             int oszlopok = foglalasok.GetLength(1);
-            bool sikeres = false;
 
             for (int sor = 0; sor < sorok; sor++)
             {
                 for (int oszlop = 0; oszlop < oszlopok; oszlop++)
                 {
-                    while (!sikeres)
+                    if (!foglalasok[sor, oszlop])
                     {
-                        if (!foglalasok[sor, oszlop])
-                        {
-                            foglalasok[sor, oszlop] = true;
-                            sikeres = true;
-                        }
-                    }  
+                        foglalasok[sor, oszlop] = true;
+                        return true;
+                    }
                 }
             }
-            return sikeres;           
+            return false;
         }
 
         public int SzabadHelyek
@@ -75,6 +71,8 @@
                 return teli;
             }
         }
+
+        public bool[,] Foglalasok { get => foglalasok; set => foglalasok = value; }
 
         public bool Foglalt(int sorSzam, int helySzam)
         {

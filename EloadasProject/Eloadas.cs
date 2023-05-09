@@ -83,7 +83,7 @@
             }
             else
             {
-                if (foglalasok[sorSzam, helySzam])
+                if (foglalasok[sorSzam - 1, helySzam - 1])
                 {
                     foglalt = true;
                 }

@@ -149,14 +149,14 @@ namespace TestEloadasProject
         [Test]
         public void Teli_jolSzamolUres()
         {
-            Assert.That(false, Is.EqualTo(eloadas.Teli));
+            Assert.That(eloadas.Teli, Is.EqualTo(false));
         }
 
         [Test]
         public void Teli_jolSzamolNemTeljesenUres()
         {
             eloadas.lefoglal();
-            Assert.That(false, Is.EqualTo(eloadas.Teli));
+            Assert.That(eloadas.Teli, Is.EqualTo(false));
         }
 
         [Test]
@@ -167,7 +167,7 @@ namespace TestEloadasProject
             eloadas.lefoglal();
             eloadas.lefoglal();
             eloadas.lefoglal();
-            Assert.That(false, Is.EqualTo(eloadas.Teli));
+            Assert.That(eloadas.Teli, Is.EqualTo(false));
         }
 
         [Test]
@@ -179,7 +179,48 @@ namespace TestEloadasProject
             e.lefoglal();
             e.lefoglal();
             e.lefoglal();
-            Assert.That(true, Is.EqualTo(e.Teli));
+            Assert.That(e.Teli, Is.EqualTo(true));
+        }
+
+        [Test]
+        public void Foglalt_haFalse()
+        {
+            Assert.That(eloadas.Foglalt(1, 1), Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Foglalt_haTrue()
+        {
+            eloadas.lefoglal();
+            Assert.That(eloadas.Foglalt(1, 1), Is.EqualTo(true));
+        }
+
+        [Test]
+        public void Foglalt_haFalseNemCsakAzElso()
+        {
+            Assert.That(eloadas.Foglalt(5, 6), Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Foglalt_haFalseDeVanTrue()
+        {
+            eloadas.lefoglal();
+            eloadas.lefoglal();
+            eloadas.lefoglal();
+            eloadas.lefoglal();
+            eloadas.lefoglal();
+            Assert.That(eloadas.Foglalt(5, 6), Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Foglalt_haTrueNemCsakAzElso()
+        {
+            eloadas.lefoglal();
+            eloadas.lefoglal();
+            eloadas.lefoglal();
+            eloadas.lefoglal();
+            eloadas.lefoglal();
+            Assert.That(eloadas.Foglalt(1, 4), Is.EqualTo(true));
         }
     }
 }

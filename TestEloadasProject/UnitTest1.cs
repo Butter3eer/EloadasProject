@@ -109,5 +109,77 @@ namespace TestEloadasProject
             Assert.That(true, Is.EqualTo(eloadas.Foglalasok[0, 1]));
             Assert.That(true, Is.EqualTo(eloadas.Foglalasok[0, 0]));
         }
+
+        [Test]
+        public void SzabadHelyek_jolSzamolUres()
+        {
+            Assert.That(eloadas.SzabadHelyek, Is.EqualTo(100));
+        }
+
+        [Test]
+        public void SzabadHelyek_jolSzamolEgy()
+        {
+            eloadas.lefoglal();
+            Assert.That(eloadas.SzabadHelyek, Is.EqualTo(99));
+        }
+
+        [Test]
+        public void SzabadHelyek_jolSzamolTobb()
+        {
+            eloadas.lefoglal();
+            eloadas.lefoglal();
+            eloadas.lefoglal();
+            eloadas.lefoglal();
+            eloadas.lefoglal();
+            Assert.That(eloadas.SzabadHelyek, Is.EqualTo(95));
+        }
+
+        [Test]
+        public void SzabadHelyek_jolSzamolTobbMajdnemTele()
+        {
+            Eloadas e = new Eloadas(1, 6);
+            e.lefoglal();
+            e.lefoglal();
+            e.lefoglal();
+            e.lefoglal();
+            e.lefoglal();
+            Assert.That(e.SzabadHelyek, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void Teli_jolSzamolUres()
+        {
+            Assert.That(false, Is.EqualTo(eloadas.Teli));
+        }
+
+        [Test]
+        public void Teli_jolSzamolNemTeljesenUres()
+        {
+            eloadas.lefoglal();
+            Assert.That(false, Is.EqualTo(eloadas.Teli));
+        }
+
+        [Test]
+        public void Teli_jolSzamolNemTeljesenUresTobb()
+        {
+            eloadas.lefoglal();
+            eloadas.lefoglal();
+            eloadas.lefoglal();
+            eloadas.lefoglal();
+            eloadas.lefoglal();
+            Assert.That(false, Is.EqualTo(eloadas.Teli));
+        }
+
+        [Test]
+        public void Teli_jolSzamolTeli()
+        {
+            Eloadas e = new Eloadas(1, 5);
+            e.lefoglal();
+            e.lefoglal();
+            e.lefoglal();
+            e.lefoglal();
+            e.lefoglal();
+            Assert.That(true, Is.EqualTo(e.Teli));
+        }
     }
 }

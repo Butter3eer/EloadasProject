@@ -42,7 +42,7 @@
                 int db = 0;
                 foreach (var item in foglalasok)
                 {
-                    if (item)
+                    if (!item)
                     {
                         db++;
                     }
